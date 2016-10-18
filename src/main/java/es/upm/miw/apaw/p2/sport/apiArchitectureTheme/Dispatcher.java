@@ -3,7 +3,6 @@ package es.upm.miw.apaw.p2.sport.apiArchitectureTheme;
 import es.upm.miw.apaw.p2.sport.api.UserResource;
 import es.upm.miw.apaw.p2.sport.api.SportResource;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidRequestException;
-import es.upm.miw.apiArchitectureTheme.exceptions.InvalidThemeFieldException;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidNumberOfQueryParametersInRequestException;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidQueryParametersInRequestException;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidRequestBodyException;
