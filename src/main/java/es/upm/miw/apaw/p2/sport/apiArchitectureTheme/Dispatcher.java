@@ -20,10 +20,10 @@ public class Dispatcher {
 	}
 
 	public void doGet(HttpRequest request, HttpResponse response) {
-		// **/users
+		// GET **/users
 		if ("users".equals(request.getPath()))
 			response.setBody(userResource.userList().toString());
-		// **/users/search?sport=*
+		// GET **/users/search?sport=*
 		else if (("users".equals(request.paths()[0])) && ("search".equals(request.paths()[1]))) {
 			if (request.getParams().size() == 1) {
 				if (request.getParams().get("sport") == null)
@@ -59,7 +59,7 @@ public class Dispatcher {
 				}
 			}
 			break;
-		// POST **/themes body="themeName"
+		// POST **/sports body="themeName"
 		case "sports":
 			// Injectar parámetros...
 			try {
@@ -76,10 +76,10 @@ public class Dispatcher {
 	}
 
 	public void doPut(HttpRequest request, HttpResponse response) {
-		// **/users/{nick}/sport body="sportName"
+		// PUT **/users/{nick}/sport body="sportName"
 		if ("users".equals(request.paths()[0]) && "sport".equals(request.paths()[2])) {
 			try {
-				response.setBody(userResource.addSport(request.paths()[1]).toString());
+				userResource.addSport(request.paths()[1], request.getBody());
 			} catch (Exception e) {
 				responseError(response, e);
 			}
