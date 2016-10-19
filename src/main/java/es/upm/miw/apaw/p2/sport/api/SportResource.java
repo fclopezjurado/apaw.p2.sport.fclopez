@@ -11,8 +11,8 @@ public class SportResource {
 		new SportController().createSport(sportName);
 	}
 
-	private void validateSport(String sportName) throws InvalidSportException {
-		if (SportController().isInvalidSport(sportName))
+	public void validateSport(String sportName) throws InvalidSportException {
+		if (new SportController().isInvalidSport(sportName))
 			throw new InvalidSportException(sportName);
 	}
 
