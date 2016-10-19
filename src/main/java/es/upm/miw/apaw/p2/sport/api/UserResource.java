@@ -2,6 +2,7 @@ package es.upm.miw.apaw.p2.sport.api;
 
 import es.upm.miw.apaw.p2.sport.controllers.UserController;
 import es.upm.miw.apaw.p2.sport.wrappers.UserListWrapper;
+import es.upm.miw.apaw.p2.sport.wrappers.CompleteUserListWrapper;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidUserNickException;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidUserEmailException;
 import es.upm.miw.apaw.p2.sport.exceptions.InvalidSportException;
@@ -18,7 +19,7 @@ public class UserResource {
 			throws InvalidUserNickException, InvalidUserEmailException {
 		this.validateUserNick(userNick);
 		this.validateUserEmail(userEmail);
-		new UserController().createUser(sportName);
+		new UserController().createUser(userNick, userEmail);
 	}
 
 	private void validateUserNick(String userNick) throws InvalidUserNickException {
