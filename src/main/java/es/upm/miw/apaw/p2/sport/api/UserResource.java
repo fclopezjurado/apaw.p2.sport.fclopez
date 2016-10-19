@@ -10,7 +10,7 @@ import es.upm.miw.apaw.p2.sport.exceptions.InvalidSportException;
 public class UserResource {
 
 	// GET **/users
-	public UserListWrapper userList() {
+	public CompleteUserListWrapper userList() {
 		return new UserController().userList();
 	}
 
@@ -42,7 +42,7 @@ public class UserResource {
 	}
 
 	// GET **/users/search?sport=*
-	public CompleteUserListWrapper searchUser(String sportName, SportResource sportResource)
+	public UserListWrapper searchUser(String sportName, SportResource sportResource)
 			throws InvalidSportException {
 		sportResource.validateSport(sportName);
 		return new UserController().searchUser(sportName);
