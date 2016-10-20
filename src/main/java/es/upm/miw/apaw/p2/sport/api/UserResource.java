@@ -23,7 +23,7 @@ public class UserResource {
 	}
 
 	private void validateUserNick(String userNick) throws InvalidUserNickException {
-		if (UserController().isInvalidUserNick(userNick))
+		if (new UserController().isInvalidUserNick(userNick))
 			throw new InvalidUserNickException(userNick);
 	}
 
