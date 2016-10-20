@@ -30,7 +30,8 @@ public class Dispatcher {
 					responseError(response, new InvalidQueryParametersInRequestException(request.getParams()));
 				else {
 					try {
-						response.setBody(userResource.searchUser(request.getParams().get("sport")).toString());
+						response.setBody(
+								userResource.searchUser(request.getParams().get("sport"), sportResource).toString());
 					} catch (Exception e) {
 						responseError(response, e);
 					}
