@@ -18,6 +18,10 @@ public abstract class GenericMemoryDao<T> implements GenericDao<T, String> {
 		map.put(this.getId(entity), entity);
 	}
 
+	public void update(String id, T entity) {
+		map.put(id, entity);
+	}
+
 	@Override
 	public T read(String id) {
 		return map.get(id);
