@@ -8,8 +8,6 @@ public interface GenericDao<T, ID> {
 
 	T read(ID id);
 
-	void update(T entity);
-
 	List<T> findAll();
 
 }
