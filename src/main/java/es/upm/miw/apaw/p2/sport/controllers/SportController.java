@@ -8,7 +8,7 @@ public class SportController {
 	public void createSport(String sportName) {
 		DaoFactory.getFactory().getSportDao().create(new Sport(sportName));
 	}
-	
+
 	public boolean isInvalidSport(String sportName) {
 		return DaoFactory.getFactory().getSportDao().isInvalidSport(sportName);
 	}
