@@ -10,19 +10,19 @@ public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao 
 	public SportDaoMemory() {
 		this.setMap(new HashMap<String, Sport>());
 	}
-	
+
 	@Override
 	protected String getId(Sport entity) {
-		return entity.getSportName();
+		return entity.getName();
 	}
 
 	@Override
 	public boolean isInvalidSport(String sportName) {
-		for (Sport sport: this.findAll())
-			if (sport.getSportName().equals(sportName))
-				return false;
-			
-		return true;
+		for (Sport sport : this.findAll())
+			if (sport.getName().equals(sportName))
+				return true;
+
+		return false;
 	}
 
 }
