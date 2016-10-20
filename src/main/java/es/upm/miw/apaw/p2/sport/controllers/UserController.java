@@ -28,18 +28,18 @@ public class UserController {
 	public boolean isInvalidUserNick(String userNick) {
 		return DaoFactory.getFactory().getUserDao().isInvalidUserNick(userNick);
 	}
-	
+
 	public void addSport(String userNick, String sportName) {
 		Sport sport = DaoFactory.getFactory().getSportDao().read(sportName);
 		User user = DaoFactory.getFactory().getUserDao().read(userNick);
-		DaoFactory.getFactory().getUserSportDao().create(new UserSport(user, sport));
+		DaoFactory.getFactory().getUserDao().addSport(user, sport);
 	}
-	
+
 	public UserListWrapper searchUser(String sportName) {
-		List<User> userList = DaoFactory.getFactory().getUserSportDao().findBySport(sportName);
+		List<User> userList = DaoFactory.getFactory().getUserDao().findBySport(sportName);
 		UserListWrapper userListWrapper = new UserListWrapper();
 		for (User user : userList) {
-			userListWrapper.addUserListWrapper(new userWrapper(user.getNick(), user.getEmail()));
+			userListWrapper.addUserListWrapper(new UserWrapper(user.getNick(), user.getEmail()));
 		}
 		return userListWrapper;
 	}
