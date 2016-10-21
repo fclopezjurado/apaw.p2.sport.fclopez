@@ -5,7 +5,6 @@ import java.util.List;
 import es.upm.miw.apaw.p2.sport.daos.DaoFactory;
 import es.upm.miw.apaw.p2.sport.entities.User;
 import es.upm.miw.apaw.p2.sport.entities.Sport;
-import es.upm.miw.apaw.p2.sport.entities.UserSport;
 import es.upm.miw.apaw.p2.sport.wrappers.CompleteUserListWrapper;
 import es.upm.miw.apaw.p2.sport.wrappers.UserListWrapper;
 import es.upm.miw.apaw.p2.sport.wrappers.UserWrapper;
