@@ -17,13 +17,14 @@ public class UserResource {
 	// POST **/users body="nick:email"
 	public void createUser(String userNick, String userEmail)
 			throws InvalidUserNickException, InvalidUserEmailException {
-		this.validateUserNick(userNick);
+		this.validateUserNick(userNick, false);
 		this.validateUserEmail(userEmail);
 		new UserController().createUser(userNick, userEmail);
 	}
 
-	private void validateUserNick(String userNick) throws InvalidUserNickException {
-		if (new UserController().isInvalidUserNick(userNick))
+	private void validateUserNick(String userNick, boolean userMustExist) throws InvalidUserNickException {
+		if ((new UserController().isInvalidUserNick(userNick) && !userMustExist)
+				|| (!new UserController().isInvalidUserNick(userNick) && userMustExist))
 			throw new InvalidUserNickException(userNick);
 	}
 
@@ -36,15 +37,14 @@ public class UserResource {
 	// PUT **/users/{nick}/sport body="sportName"
 	public void addSport(String userNick, String sportName, SportResource sportResource)
 			throws InvalidUserNickException, InvalidSportException {
-		this.validateUserNick(userNick);
-		sportResource.validateSport(sportName);
+		this.validateUserNick(userNick, true);
+		sportResource.validateSport(sportName, true);
 		new UserController().addSport(userNick, sportName);
 	}
 
 	// GET **/users/search?sport=*
-	public UserListWrapper searchUser(String sportName, SportResource sportResource)
-			throws InvalidSportException {
-		sportResource.validateSport(sportName);
+	public UserListWrapper searchUser(String sportName, SportResource sportResource) throws InvalidSportException {
+		sportResource.validateSport(sportName, true);
 		return new UserController().searchUser(sportName);
 	}
 
